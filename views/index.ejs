@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-1</title>
+    <link  rel="stylesheet" href='/style/style2.css'>
+</head>
+<body>
+    <div class="background"></div>
+        <video autoplay muted loop >
+        <source src='/images/2268807-hd_1920_1080_24fps.mp4' type="video/mp4">
+            The broser doesnt allow this element . 
+        </video>
+        <div class="layer"></div>
+    </div>
+    <%if(items.length>0 ){%>
+    <div class="container">
+            <%items.forEach((item)=>{%>
+                <div class="items">
+                    <img class="book_img" src="<%= item.url%>"> 
+                        <h2><a href="/view/<%=item.book_id%>" style="color: black;"><%=item.title%></a></h2>
+                        <p class="date"><%=item.read_date%></p>
+                        <p class="isbn"><%=item.isbn%></p>
+                    <p class="idea"><%=item.idea%></p>
+                    <div class="rating"  name="<%=item.rating%>" >
+                        <img src="/images/star.svg" class="star-1">
+                        <img src="/images/star.svg" class="star-2">
+                        <img src="/images/star.svg" class="star-3">
+                        <img src="/images/star.svg" class="star-4">
+                        <img src="/images/star.svg" class="star-5">
+                    </div>
+                </div>
+                <div class="update-bar">
+                    <button type="button" onclick="window.location.href='/edit/<%=item.book_id%>'">Edit</button>
+                    <button type="button" onclick="window.location.href='/delete/<%=item.book_id%>'">Delete</button>
+                </div>
+            <%})%>
+        
+    </div>
+    <%}%>
+    <div class="left-container">
+        <div class="user">
+            <img src="/images/person-circle.svg" alt="User Icon">
+            <p><%=username%></p>
+            <img src="/images/caret-down-fill.svg" alt="User Icon" id="down">
+            <div class="log-out" style="display: none;">
+                <input type="image" src="/images/box-arrow-left.svg" onclick="window.location.href='/'" alt="Go to Home">
+                <p>Log Out</p>
+            </div>
+        </div>
+        <button class="new" onclick="window.location.href='/new'">NEW POST</button>
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/log-out.js" charset="utf-8"></script>
+    <script src="/js/stars.js" charset="utf-8"></script>
+</body>
+</html>

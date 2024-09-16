@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-1</title>
+    <link  rel="stylesheet" href='/style/style2.css'>
+</head>
+<body>
+    <div class="background"></div>
+        <video autoplay muted loop >
+        <source src='/images/2268807-hd_1920_1080_24fps.mp4' type="video/mp4">
+            The broser doesnt allow this element . 
+        </video>
+        <div class="layer"></div>
+    </div>
+    <div class="container">
+                <div class="items" style="margin-bottom: 30px;">
+                    <img class="book_img" src="<%= item.url%>"> 
+                        <h2><%=item.title%></a></h2>
+                        <p class="date"><%=item.read_date%></p>
+                        <p class="isbn"><%=item.isbn%></p>
+                    <p class="idea"><%=item.idea%></p>
+                    <div class="rating"  name="<%=item.rating%>" >
+                        <img src="/images/star.svg" class="star-1">
+                        <img src="/images/star.svg" class="star-2">
+                        <img src="/images/star.svg" class="star-3">
+                        <img src="/images/star.svg" class="star-4">
+                        <img src="/images/star.svg" class="star-5">
+                    </div>
+                    <p class="idea"> <%=item.notes%></p>
+                </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/stars.js" charset="utf-8"></script>
+</body>
+</html>

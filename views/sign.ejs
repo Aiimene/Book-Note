@@ -1,0 +1,19 @@
+<%-include("./partials/background.ejs")%>
+    <div class="opacity">
+        <div class="card">
+            <h2 >Sign Up</h2>
+            <p>Enter you credential sign up </p>
+            <form method="post" , action="/acount-sign" class="form">
+                <input type="text" name="username" id="username" placeholder="Username">
+                <%if(locals.error){%>
+                    <p id="error" style="height: 30px; color:red ; opacity:1"><%=error%></p>
+                <%}%>
+                <input type="password" name="password" id="password" placeholder="Password" > <%# should have less than 50 char %>
+                <input type="password" name="confirm" placeholder="Confirm Password" >
+                <button type="submit" id="submit"><%= button%></button>
+            </form>
+            <p>You already have an acount ? <span><a href="/sign" style="color: blue;">Log In</a></span></p>
+        </div>
+    </div>
+<%-include("./partials/bar.ejs")%>
+

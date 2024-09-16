@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book</title>
+    <link rel="stylesheet" href="/style/style3.css">
+</head>
+<body>
+    <div class="background"></div>
+        <video autoplay muted loop >
+        <source src='/images/2268807-hd_1920_1080_24fps.mp4' type="video/mp4">
+            The broser doesnt allow this element . 
+        </video>
+        <div class="layer"></div>
+    </div>
+    <div class="container">
+        <div class="items">
+            <%if(locals.item){%>
+               <form method="post" action="/edit/<%=item.book_id%>">
+                <label>Title :</label>
+                <input type="text" name="title" value='<%=item.title%>'>
+                <label>Date of reading : </label>
+                <input type="date" value="<%=item.read_date%>" name="date">
+                <label>Your rating :</label>
+                <input type="number" name="rating" value="<%=item.rating%>" min="1" max="5">
+                <label>The main idea of the book : </label>
+                <textarea name="idea"><%=item.idea%></textarea>
+                <label>Add some notes : </label>
+                <textarea name="notes"><%=item.notes%></textarea>
+                <button type="submit" class="submit">Edit</button>
+                </form> 
+            <%}else{%>
+                <form method="post" action="/add">
+                <label>Title :</label>
+                <input type="text" name="title" required >
+                <label>Date of reading : </label>
+                <input type="date" required name="date">
+                <label>Your rating :</label>
+                <input type="number" name="rating"  min="1" max="5">
+                <label>The main idea of the book : </label>
+                <textarea name="idea" required></textarea>
+                <label>Add some notes : </label>
+                <textarea name="notes"> </textarea>
+                <button type="submit" class="submit">ADD</button>
+                </form> 
+            <%}%>  
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script charset="utf-8" src="/public/js/stars-edit.js"></script>
+
+</body>
+</html>

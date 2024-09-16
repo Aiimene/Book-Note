@@ -1,0 +1,20 @@
+<%-include("./partials/background.ejs")%>
+    <div class="opacity">
+        <div class="card">
+            <h2 >Welcome Back</h2>
+            <p>Enter you credential to login </p>
+            <form method="post" , action="/acount-log" class="form">
+                <input type="text" name="username" id="username" placeholder="Username">
+                <%if(locals.error){%>
+                    <p id="error" style="color: red;"> <%= error%></p>
+                <%}%>
+                <input type="password" name="password" id="password" placeholder="Password" >
+                <%if(locals.pass_error){%>
+                    <p id="pass_error" style="height: 30px; color:red ; opacity:1"> <%= pass_error %></p>
+                <%}%>
+                <button type="submit"><%= button%></button>
+            </form>
+            <p>Don't have an account ? <span><a href="/sign" style="color: blue;">Sign up</a></span></p>
+        </div>
+    </div>
+<%-include("./partials/bar.ejs")%>

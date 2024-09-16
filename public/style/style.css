@@ -1,0 +1,112 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-size: cover;
+}
+.background{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+}
+.background video{
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+}
+.opacity{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 101vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    opacity: 0.8;
+}
+.card{
+    border: 2px solid white;
+    z-index: 1;
+    border-radius: 10%;
+    background-color: gray;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: sans-serif;
+    padding: 30px 0px;
+    cursor: pointer;
+}
+.card input{
+    font-size: 20px;
+}
+.card>form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+}
+form>*:not(#error , #pass_error ){
+    margin: 20px 0px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 5px;
+}
+button[type="submit"]{
+    font-size: 16px;
+    color: black;
+}
+button[type="submit"]:hover{
+    background-color: #FFDBB5;
+    transition: background-color 0.3s ease 0.2s, transform 0.5s ease 0.2s;
+    cursor: pointer;
+}
+.nav-bar{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    background-color: #603F26;
+    opacity: 0.6;
+}
+.nav-bar>button{
+    padding: 4px;
+    border: none;
+    margin: 0px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 40px;
+    width: 70px;
+    color: black ;
+    font-size: 16px;
+    background-color: white;
+}
+#active{
+    background-color: black ;
+    color: white  ;
+    opacity: 1 ;
+}
+.nav-bar a{
+    text-decoration: none;
+    color: inherit;
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+.vibrate{
+    animation: vibrate 0.2s infinite;
+}
