@@ -93,6 +93,7 @@ app.get("/user", async (req, res) => {
       item.read_date = new Date(item.read_date);
       item.read_date=item.read_date.toISOString().split('T')[0];
     });
+    console.log(result);
     res.render("index.ejs", { items: result, username: currentUserName });
   } catch (error) {
     console.log(error.message);
@@ -107,7 +108,6 @@ app.get("/edit/:id", async (req, res) => {
         name: currentUserName,
       },
     });
-
     const result = response.data[0];
     res.render("edit.ejs", { item: result });
   } catch (error) {
@@ -115,6 +115,7 @@ app.get("/edit/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
 app.post("/edit/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -140,7 +141,6 @@ app.get("/view/:id", async (req, res) => {
     });
     const result = response.data[0];
     res.render("view.ejs", { item: result });
-    s;
   } catch (error) {
     console.log(error.message);
     res.status(500).send("internal server error .");
@@ -161,12 +161,14 @@ app.get("/new", (req, res) => {
 app.post("/add", async (req, res) => {
   try {
     const body = req.body;
-    body.username = currentUserName;
+    body.username = currentUserName ;
     console.log(body);
     await axios.post(API_URL + "add", body);
+
     res.redirect("/user");
   } catch (error) {
-    res.status(500).send("Backend server has failed .. ");
+    console.log(error.message);
+    res.status(500).send("Backend server has failed ... ");
   }
 });
 

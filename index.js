@@ -31,24 +31,26 @@ app.get("/user", async (req, res) => {
     console.log(error.message);
   }
 });
-// view the note 
+
 app.get("/view/:id" , async (req , res)=>{
   try{
     const username = req.query.name ; 
     const id = req.params.id ; 
     const response = await db.query("SELECT  * FROM users JOIN books ON books.user_id = users.id WHERE username = $1 AND books.book_id = $2 " , [username , id]);
-    const result = response.rows; 
+    const result = response.rows;
     res.json(result);
   }catch(error){
     console.log(error.message);
   }
 });
+
 app.patch("/edit/:id" , async(req , res )=>{
   try{
     const id = req.params.id ; 
     let { title, date, rating, idea, notes } = req.body;
     const parsedRating = parseInt(rating, 10);
-    if(notes==""){notes=null}
+    if(date==""){date= newDate();}
+    if(notes==""){notes=null;}
     await db.query(
       "UPDATE books SET title = $1, read_date = $2, rating = $3, idea = $4, notes = $5 WHERE book_id = $6;",
       [title, date, parsedRating, idea, notes, id]
@@ -59,6 +61,7 @@ app.patch("/edit/:id" , async(req , res )=>{
     res.status(500).json({error : "error in the api server ."});
   }
 });
+
 app.delete("/delete/:id" , async (req , res )=>{
   try{
     const id = req.params.id ; 
@@ -69,21 +72,31 @@ app.delete("/delete/:id" , async (req , res )=>{
     res.send(500).send("API server error");
   }
 });
-
-app.post("/add" , async(req , res)=>{
-  try{
-    const data = req.body ; 
-    const result = await db.query("SELECT id FROM users WHERE username = $1 " , [data.username]);
+async function newDate() {
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return '${year}-${month}-${day}';
+}
+app.post("/add", async (req, res) => {
+  try {
+    const data = req.body;
+    console.log(data);
+    const result = await db.query("SELECT id FROM users WHERE username = $1", [data.username]);
     const userID = result.rows[0].id;
-    await db.query("INSERT INTO books (title , read_date , rating , idea , notes , user_id ) VALUES ($1,$2,$3,$4,$5,$6);",
-      [data.title , data.date , parseInt(data.rating), data.idea , data.notes , userID]
+    const readDate = data.date === "" ? null : data.date;
+    await db.query(
+      "INSERT INTO books (title, read_date, rating, idea, notes, user_id) VALUES ($1, $2, $3, $4, $5, $6);",
+      [data.title, readDate, parseInt(data.rating), data.idea, data.notes, userID]
     );
-    res.status(200).send("book succefully aded");
-  }catch(error){
-    console.log(error.message);
-    res.status(500).send(error.message);
+    res.status(200).json({ message: "Data added successfully" });
+  } catch (error) {
+    console.error(error.message); 
+    res.status(500).send("Internal Server Error");
   }
 });
+
 
 app.listen(port, () => {
   console.log("API server running  ");

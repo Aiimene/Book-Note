@@ -23,7 +23,7 @@
                         <p class="date"><%=item.read_date%></p>
                         <p class="isbn"><%=item.isbn%></p>
                     <p class="idea"><%=item.idea%></p>
-                    <div class="rating"  name="<%=item.rating%>" >
+                    <div class="rating" data-rating="<%=item.rating %>" id="<%=item.nook_id%>" onload="setrating(this)">
                         <img src="/images/star.svg" class="star-1">
                         <img src="/images/star.svg" class="star-2">
                         <img src="/images/star.svg" class="star-3">
@@ -42,12 +42,12 @@
     <div class="left-container">
         <div class="user">
             <img src="/images/person-circle.svg" alt="User Icon">
-            <p><%=username%></p>
-            <img src="/images/caret-down-fill.svg" alt="User Icon" id="down">
-            <div class="log-out" style="display: none;">
+            <p class="username"><%=username = username[0].toUpperCase() + username.slice(1)%></p>
+                <div class="log-out" class="down" >
                 <input type="image" src="/images/box-arrow-left.svg" onclick="window.location.href='/'" alt="Go to Home">
                 <p>Log Out</p>
-            </div>
+                </div>
+            
         </div>
         <button class="new" onclick="window.location.href='/new'">NEW POST</button>
     </div>

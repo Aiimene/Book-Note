@@ -119,12 +119,12 @@ video{
     width: 100%;
     align-items: center;
     font-family: sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     justify-content: center;
     padding: 10px 0 ;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
-.user>img{
+.user img{
     height: 50px;
     margin: 0 10px 0 0  ;
 }
@@ -148,6 +148,7 @@ video{
     display: flex;
     justify-content: center;
     align-content: center;
+    margin-top: 20px;
 }
 .log-out>input{
     height: 50px;
@@ -157,4 +158,9 @@ video{
     display: flex;
     align-items: center;
     margin-left: 5px;
+}
+.username{
+    width: 60%;
+    text-align: center;
+    overflow: hidden;
 }

@@ -21,7 +21,7 @@
                 <label>Title :</label>
                 <input type="text" name="title" value='<%=item.title%>'>
                 <label>Date of reading : </label>
-                <input type="date" value="<%=item.read_date%>" name="date">
+                <input type="date" required name="date">
                 <label>Your rating :</label>
                 <input type="number" name="rating" value="<%=item.rating%>" min="1" max="5">
                 <label>The main idea of the book : </label>
@@ -33,11 +33,11 @@
             <%}else{%>
                 <form method="post" action="/add">
                 <label>Title :</label>
-                <input type="text" name="title" required >
+                <input type="text" name="title" required>
                 <label>Date of reading : </label>
-                <input type="date" required name="date">
+                <input type="date"  name="date" required>
                 <label>Your rating :</label>
-                <input type="number" name="rating"  min="1" max="5">
+                <input type="number" name="rating"  min="0" max="5" value="0">
                 <label>The main idea of the book : </label>
                 <textarea name="idea" required></textarea>
                 <label>Add some notes : </label>
